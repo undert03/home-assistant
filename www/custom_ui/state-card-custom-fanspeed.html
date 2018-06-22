@@ -105,8 +105,6 @@
           },
           setSpeed: function (ev, setspeed ) {
           	if( setspeed == 'off' ){
-          		//this.updateStyles({'--status-text-color': '#F44336'});
-							//this.updateStyles({'--state-label-badge': '#F44336'});
 							var serviceData = {entity_id: this.stateObj.entity_id};
             	this.hass.callService('fan', 'turn_off', serviceData);          		
           		
