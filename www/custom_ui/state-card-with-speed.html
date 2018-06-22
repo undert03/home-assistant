@@ -1,0 +1,91 @@
+<link rel="import" href="fan-model.html">
+
+<dom-module id="state-card-with-speed">
+  <template>
+    <style is="custom-style"></style>
+    <style>
+      
+      .state {
+        white-space: nowrap;
+      }
+      
+      .speed {
+        min-width: 0;
+      }
+    
+
+      ha-entity-toggle {
+        margin-left: 16px;
+      }
+    </style>
+
+    <div class='state'>
+
+        <paper-button-group 
+          in-dialog='[[inDialog]]'
+          selected='[[entityObj.getSpeed]]'>
+            <!--<paper-button class='speed'
+              toggles name="off" 
+              on-tap='onOffTap'
+              disabled='[[entityObj.isOff]]'>Off</paper-button>-->
+            <paper-button 
+              in-dialog='[[inDialog]]'
+              class='speed'
+              toggles name="low" 
+              on-tap='onLowTap'
+              disabled='[[entityObj.isLowSpeed]]'>Low</paper-button>
+            <paper-button 
+              in-dialog='[[inDialog]]'
+              class='speed'
+              toggles name="medium" 
+              on-tap='onMedTap'
+              disabled='[[entityObj.isMedSpeed]]'>Med</paper-button>
+            <paper-button 
+              in-dialog='[[inDialog]]'
+              class='speed'
+              toggles name="high" 
+              on-tap='onHighTap'
+              disabled='[[entityObj.isHighSpeed]]'>High</paper-button>
+        </paper-button-group> 
+
+    </div>
+
+  </template>
+</dom-module>
+
+<script>
+Polymer({
+  is: 'state-card-with-speed',
+  properties: {
+    hass: {
+      type: Object,
+    },
+    inDialog: {
+      type: Boolean,
+      value: false,
+    },
+    stateObj: {
+      type: Object,
+    },
+    entityObj: {
+      type: Object,
+      computed: 'computeEntityObj(hass, stateObj)',
+    },
+  },
+  computeEntityObj: function (hass, stateObj) {
+    return new window.FanEntity(hass, stateObj);
+  },
+  onOffTap: function (ev) {
+    this.entityObj.setSpeed('off', ev);
+  },
+  onLowTap: function (ev) {
+    this.entityObj.setSpeed('low', ev);
+  },
+  onMedTap: function (ev) {
+    this.entityObj.setSpeed('medium', ev);
+  },
+  onHighTap: function (ev) {
+    this.entityObj.setSpeed('high', ev);
+  },
+});
+</script>

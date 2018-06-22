@@ -1,0 +1,80 @@
+<script>
+(function () {
+  window.FanEntity = function (hass, stateObj) {
+    this.hass = hass;
+    this.stateObj = stateObj;
+  };
+
+  function addGetter(name, getter) {
+    Object.defineProperty(window.FanEntity.prototype, name,
+                          { get: getter });
+  }
+
+  addGetter('isOff', function () {
+      return this.stateObj.state === 'off';
+    
+  });
+  
+  addGetter('getSpeed', function () {
+    if (this.stateObj.attributes.speed !== undefined && this.stateObj.state != 'off') {
+      return this.stateObj.attributes.speed;
+    }
+
+    return 'off';
+    
+  });
+
+  addGetter('isLowSpeed', function () {
+    if (this.stateObj.attributes.speed !== undefined && this.stateObj.state != 'off') {
+      return this.stateObj.attributes.speed === 'low';
+    }
+    
+  });
+
+  addGetter('isMedSpeed', function () {
+    if (this.stateObj.attributes.speed !== undefined && this.stateObj.state != 'off') {
+      return this.stateObj.attributes.speed === 'medium';
+    }
+    
+  });
+
+  addGetter('isHighSpeed', function () {
+    if (this.stateObj.attributes.speed !== undefined && this.stateObj.state != 'off') {
+      return this.stateObj.attributes.speed === 'high';
+    }
+    
+  });
+
+
+  /* eslint-enable no-bitwise */
+
+    Object.assign(window.FanEntity.prototype, {
+        setSpeed(speedVal, ev) {
+
+            if (speedVal == 'off')
+            {
+                 this.callService('turn_off');
+            }
+            else
+            {
+                if (this.stateObj.state != 'on'){
+                    this.callService('turn_on');
+                }
+                this.callService('set_speed', {speed: speedVal});
+            }
+
+            ev.stopPropagation();
+        },
+
+
+    // helper method
+
+        callService(service, data) {
+            var serviceData = data || {};
+            serviceData.entity_id = this.stateObj.entity_id;
+            this.hass.callService('fan', service, serviceData);
+            
+        },
+  });
+}());
+</script>
