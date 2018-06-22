@@ -1,0 +1,7 @@
+
+#Honeywell EVL4 Panel and Sensors
+binary_sensor.sec_*:
+  persistent: true
+  custom_ui_state_card: state-card-custom-ui
+  extra_data_template: >
+    ${ moment.unix( parseInt( (Date.now() - (parseInt(attributes.last_tripped_time) * 1000)) / 1000 ) ).fromNow() }
