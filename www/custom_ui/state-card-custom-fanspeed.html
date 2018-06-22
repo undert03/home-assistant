@@ -6,18 +6,22 @@
         line-height: 1.5;
       }
       paper-button {
-        min-width: 1vh;
-        background-color:#f3f3f3;
-      	font-size: 1.5vh;
+		    min-width: 30px;
+		    height: 30px;
+		    margin: 2px;  
+		    background-color:#f3f3f3;
+		    border: 1px solid lightgrey; 
+		    font-size: 10px !important;
+		    float: right !important;   	
       }
     </style>
 		<div class='horizontal justified layout'>
 		  <state-info state-obj="[[stateObj]]"></state-info>
 		  <paper-button-group>
-		      <paper-button raised style="[[btnOffstyle]]" on-click='handleOffTap'>Off</paper-button>
-		      <paper-button raised style="[[btnLowstyle]]" on-click='handleLowTap'>Low</paper-button>
-		      <paper-button raised style="[[btnMedstyle]]" on-click='handleMedTap'>Med</paper-button>
-		      <paper-button raised style="[[btnHighstyle]]" on-click='handleHighTap'>High</paper-button>
+		      <paper-button style="[[btnOffstyle]]" on-click='handleOffTap'>Off</paper-button>
+		      <paper-button style="[[btnLowstyle]]" on-click='handleLowTap'>Low</paper-button>
+		      <paper-button style="[[btnMedstyle]]" on-click='handleMedTap'>Med</paper-button>
+		      <paper-button style="[[btnHighstyle]]" on-click='handleHighTap'>High</paper-button>
 		  </paper-button-group>
 		</div>
 </template>
