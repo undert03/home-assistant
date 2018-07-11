@@ -1,4 +1,10 @@
 
+#Device Tracker
+device_tracker.*:
+  custom_ui_state_card: state-card-custom-ui
+  extra_data_template: >
+    ${ entity.state == 'not_home' ? (attributes.last_seen > 0 ? moment(attributes.last_seen).fromNow() : '' ) : (attributes.assoc_time > 0 ? moment.unix(attributes.assoc_time).fromNow() : '' ) }
+
 #Honeywell EVL4 Panel and Sensors
 binary_sensor.sec_*:
   persistent: true
