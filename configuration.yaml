@@ -15,12 +15,15 @@ customizer:
 
 frontend:
   extra_html_url:
+    - /local/custom_ui/momentjs.html
     - /local/custom_ui/state-card-custom-ui.html
     - /local/custom_ui/state-card-custom-alarm.html
     - /local/custom_ui/state-card-custom-fanspeed.html
-    - /local/custom_ui/momentjs.html
+    - /local/custom_ui/state-card-custom-html.html
   extra_html_url_es5:
+    - /local/custom_ui/momentjs.html
     - /local/custom_ui/state-card-custom-ui-es5.html
     - /local/custom_ui/state-card-custom-alarm.html
     - /local/custom_ui/state-card-custom-fanspeed.html
-    - /local/custom_ui/momentjs.html
+    - /local/custom_ui/state-card-custom-html-es5.html
+
