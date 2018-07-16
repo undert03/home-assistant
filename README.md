@@ -5,6 +5,7 @@ An ever growing collection of my config directory to Home Assistant
 
 - Envisalink EVL4 configured for Honeywell with 24 Zones
 - Fan Speed control
+- Auto Restart on Crash
 
 
 ### Envisalink 4 - Honeywell
@@ -13,6 +14,10 @@ An ever growing collection of my config directory to Home Assistant
 ### Fan Speed Control
 
 ![custom fan control 1](https://raw.githubusercontent.com/undert03/home-assistant/master/screenshots/custom_fan_1.png "custom fan control 1") ![custom fan control 2](https://raw.githubusercontent.com/undert03/home-assistant/master/screenshots/custom_fan_2.png "custom fan control 2")
+
+### Auto Restart HASS on crash
+https://medium.com/@spobwoode/automatically-restart-home-assistant-on-crash-2e98b6b58bec
+
 
 
 
