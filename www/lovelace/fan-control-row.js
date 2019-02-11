@@ -8,42 +8,42 @@ class FanControlRow extends Polymer.Element {
                 }
                 .speed {
                   min-width: 30px;
-									margin-left: 4px;
+		  margin-left: 4px;
                   margin-right: 4px;
-									background-color: #d1d4d5;
-               	 	border: 1px solid lightgrey; 
-                	font-size: 10px !important;
-                	float: right !important;   
+		  background-color: #d1d4d5;
+               	  border: 1px solid lightgrey; 
+                  font-size: 10px !important;
+                  float: right !important;   
                 }       
        			</style>
             <hui-generic-entity-row hass="[[hass]]" config="[[_config]]">
                 <div class='horizontal justified layout' on-click="stopPropagation">
                     <paper-button
                         class='speed'
-												style='[[_highOnColor]]'
+			style='[[_highOnColor]]'
                         toggles name="high"
                         on-tap='setSpeed'
                         disabled='[[_isOnHigh]]'>HIGH</paper-button>
                     <paper-button
                         class='speed'
-												style='[[_medOnColor]]'
+			style='[[_medOnColor]]'
                         toggles name="medium"
                         on-tap='setSpeed'
                         disabled='[[_isOnMed]]'>MED</paper-button>
                         
                     <paper-button
                         class='speed'
-												style='[[_lowOnColor]]'
+			style='[[_lowOnColor]]'
                         toggles name="low"
                         on-tap='setSpeed'
                         disabled='[[_isOnLow]]'>LOW</paper-button>
 
-								    <paper-button
-				             		class='speed'
-												style='[[_offColor]]'
-				               	toggles name="off"
-				               	on-tap='setSpeed'
-				             		disabled='[[_isOffState]]'>OFF</paper-button>
+		    <paper-button
+			class='speed'
+			style='[[_offColor]]'
+			toggles name="off"
+			on-tap='setSpeed'
+			disabled='[[_isOffState]]'>OFF</paper-button>
                 </div>
             </hui-generic-entity-row>
         `;
