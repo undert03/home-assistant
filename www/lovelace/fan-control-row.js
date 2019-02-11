@@ -4,7 +4,7 @@ class FanControlRow extends Polymer.Element {
             <style is="custom-style" include="iron-flex iron-flex-alignment"></style>
             <style>
                 :host {
-                 	line-height: 1.5;
+                  line-height: 1.5;
                 }
                 .speed {
                   min-width: 30px;
@@ -15,7 +15,7 @@ class FanControlRow extends Polymer.Element {
                   font-size: 10px !important;
                   float: right !important;   
                 }       
-       			</style>
+       	    </style>
             <hui-generic-entity-row hass="[[hass]]" config="[[_config]]">
                 <div class='horizontal justified layout' on-click="stopPropagation">
                     <paper-button
