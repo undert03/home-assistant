@@ -1,49 +1,49 @@
 class FanControlRow extends Polymer.Element {
     static get template() {
-        return Polymer.html `
+        return Polymer.html`
             <style is="custom-style" include="iron-flex iron-flex-alignment"></style>
             <style>
                 :host {
-                  line-height: 1.5;
+                 	line-height: 1.5;
                 }
                 .speed {
                   min-width: 30px;
-		  margin-left: 4px;
+									margin-left: 4px;
                   margin-right: 4px;
-		  background-color: #d1d4d5;
-               	  border: 1px solid lightgrey; 
-                  font-size: 10px !important;
-                  float: right !important;   
+									background-color: 'var(--dark-accent-color)';
+               	 	border: 1px solid var(--dark-theme-disabled-color); 
+                	font-size: 10px !important;
+                	float: right !important;   
                 }       
-       	    </style>
+       			</style>
             <hui-generic-entity-row hass="[[hass]]" config="[[_config]]">
                 <div class='horizontal justified layout' on-click="stopPropagation">
                     <paper-button
                         class='speed'
-			style='[[_highOnColor]]'
+												style='[[_highOnColor]]'
                         toggles name="high"
                         on-tap='setSpeed'
                         disabled='[[_isOnHigh]]'>HIGH</paper-button>
                     <paper-button
                         class='speed'
-			style='[[_medOnColor]]'
+												style='[[_medOnColor]]'
                         toggles name="medium"
                         on-tap='setSpeed'
                         disabled='[[_isOnMed]]'>MED</paper-button>
                         
                     <paper-button
                         class='speed'
-			style='[[_lowOnColor]]'
+												style='[[_lowOnColor]]'
                         toggles name="low"
                         on-tap='setSpeed'
                         disabled='[[_isOnLow]]'>LOW</paper-button>
 
-		    <paper-button
-			class='speed'
-			style='[[_offColor]]'
-			toggles name="off"
-			on-tap='setSpeed'
-			disabled='[[_isOffState]]'>OFF</paper-button>
+								    <paper-button
+				             		class='speed'
+												style='[[_offColor]]'
+				               	toggles name="off"
+				               	on-tap='setSpeed'
+				             		disabled='[[_isOffState]]'>OFF</paper-button>
                 </div>
             </hui-generic-entity-row>
         `;
@@ -57,10 +57,10 @@ class FanControlRow extends Polymer.Element {
             },
             _config: Object,
             _stateObj: Object,
-            _lowOnColor: String,
-            _medOnColor: String,
-            _highOnColor: String,
-            _offColor: String,
+						_lowOnColor: String,
+						_medOnColor: String,
+						_highOnColor: String,
+						_offColor: String,
             _isOffState: Boolean,
             _isOnState: Boolean,
             _isOnLow: Boolean,
@@ -75,83 +75,82 @@ class FanControlRow extends Polymer.Element {
 
     hassChanged(hass) {
 
-        const config = this._config;
-        const stateObj = hass.states[config.entity];
+      const config = this._config;
+      const stateObj = hass.states[config.entity];
 
-        let speed;
-        if (stateObj && stateObj.attributes) {
-            speed = stateObj.attributes.speed || 'off';
-        }
-
-        let low;
-        let med;
-        let high;
-        let offstate;
-
-        if (stateObj && stateObj.attributes) {
-            if (stateObj.state == 'on' && stateObj.attributes.speed == 'low') {
-                low = 'on';
-            } else if (stateObj.state == 'on' && stateObj.attributes.speed == 'medium') {
-                med = 'on';
-            } else if (stateObj.state == 'on' && stateObj.attributes.speed == 'high') {
-                high = 'on';
-            } else {
-                offstate = 'on';
-            }
-        }
-
-        let lowcolor;
-        let medcolor;
-        let hicolor;
-        let offcolor;
-
-        if (low == 'on') {
-            lowcolor = 'background-color: #03a9f4; color:black;';
-        } else {
-            lowcolor = '';
-        }
-
-        if (med == 'on') {
-            medcolor = 'background-color: #03a9f4; color:black;';
-        } else {
-            medcolor = '';
-        }
-
-        if (high == 'on') {
-            hicolor = 'background-color: #03a9f4; color:black;';
-        } else {
-            hicolor = '';
-        }
-
-        if (offstate == 'on') {
-            offcolor = 'background-color: #ffd1d4; color: #a0898b;';
-        } else {
-            offcolor = '';
-        }
-
-        this.setProperties({
-            _stateObj: stateObj,
-            _isOffState: stateObj.state == 'off',
-            _isOnLow: low === 'on',
-            _isOnMed: med === 'on',
-            _isOnHigh: high === 'on',
-            _lowOnColor: lowcolor,
-            _medOnColor: medcolor,
-            _highOnColor: hicolor,
-            _offColor: offcolor
-        });
+      let speed;
+      if (stateObj && stateObj.attributes) {
+          speed = stateObj.attributes.speed || 'off';
+      }
+		
+			let low;
+			let med;
+			let high;
+			let offstate;
+			
+			if (stateObj && stateObj.attributes) {
+			    if (stateObj.state == 'on' && stateObj.attributes.speed == 'low') {
+				    low = 'on';
+			    } else if (stateObj.state == 'on' && stateObj.attributes.speed == 'medium') {
+				    med = 'on';
+			    } else if (stateObj.state == 'on' && stateObj.attributes.speed == 'high') {
+				    high = 'on';
+			    } else {
+					offstate = 'on';
+				}
+			}
+		
+    	let lowcolor;
+			let medcolor;
+			let hicolor;
+			let offcolor;
+			
+			if (low == 'on') {
+				lowcolor = 'background-color: var(--dark-theme-secondary-color); color: var(--default-primary-color);';
+			} else {
+				lowcolor = '';
+			}
+			
+			if (med == 'on') {
+				medcolor = 'background-color: var(--dark-theme-secondary-color); color: var(--default-primary-color);';
+			} else {
+				medcolor = '';
+			}
+			
+			if (high == 'on') {
+				hicolor = 'background-color: var(--dark-theme-secondary-color); color: var(--default-primary-color);';
+			} else {
+				hicolor = '';
+			}
+			
+			if (offstate == 'on') {
+				offcolor = 'background-color: var(--dark-theme-secondary-color); color: var(--default-primary-color);';
+			} else {
+				offcolor = '';
+			}
+			
+			this.setProperties({
+	    	_stateObj: stateObj,
+				_isOffState: stateObj.state == 'off',
+	  		_isOnLow: low === 'on',
+				_isOnMed: med === 'on',
+				_isOnHigh: high === 'on',
+				_lowOnColor: lowcolor,
+				_medOnColor: medcolor,
+				_highOnColor: hicolor,
+				_offColor: offcolor
+	  	});
     }
 
     stopPropagation(e) {
-        e.stopPropagation();
+   		e.stopPropagation();
     }
 
     setSpeed(e) {
-        const speed = e.currentTarget.getAttribute('name');
-        this.hass.callService('fan', 'set_speed', {
-            entity_id: this._config.entity,
-            speed: speed
-        });
+      const speed = e.currentTarget.getAttribute('name');
+      this.hass.callService('fan', 'set_speed', {
+     		entity_id: this._config.entity, speed: speed
+      });
     }
 }
 
